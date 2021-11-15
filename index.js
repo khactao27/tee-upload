@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const multer = require('multer');
 const jwt = require('jsonwebtoken')
-const secretKey = process.env.v || '112customer#$!@!'
+const secretKey = process.env.v || '123'
 const password = process.env.ENCRYPT_PASSWORD || 'b{m\\c;zG"ut?j_3M'
 const port = process.env.PORT || 5003;
 const Cryptr = require('cryptr')
@@ -49,7 +49,7 @@ const storage = multer.diskStorage({
         const ext = path.extname(file.originalname)
         const name = file.originalname.split('.')
         name.pop()
-        cb(null, `timnha24h-${name.join('') || 'img'}-${Date.now()}${ext || '.png'}`);
+        cb(null, `ecommerce-${name.join('') || 'img'}-${Date.now()}${ext || '.png'}`);
     }
 });
 const fileFilter = (req, file, cb) => {
@@ -84,6 +84,7 @@ const verifyAccessToken = async (req, res, next) => {
             const token = req.headers['x-access-token']
             console.log(token)
             const user = await verifyToken(token)
+            console.log(user)
             req.user = user
             return next()
         }
