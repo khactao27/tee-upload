@@ -1,1 +1,1 @@
-docker build . -t cqdt-upload
+docker build . -t tee-upload

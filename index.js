@@ -6,7 +6,7 @@ const multer = require('multer');
 const jwt = require('jsonwebtoken')
 const secretKey = process.env.v || '123'
 const password = process.env.ENCRYPT_PASSWORD || 'b{m\\c;zG"ut?j_3M'
-const port = process.env.PORT || 5003;
+const port = process.env.PORT || 8010;
 const Cryptr = require('cryptr')
 const cryptr = new Cryptr(password)
 const isDisableToken = 1 || !!+process.env.DISABLE_TOKEN
@@ -49,7 +49,7 @@ const storage = multer.diskStorage({
         const ext = path.extname(file.originalname)
         const name = file.originalname.split('.')
         name.pop()
-        cb(null, `ecommerce-${name.join('') || 'img'}-${Date.now()}${ext || '.png'}`);
+        cb(null, `tee-${name.join('') || 'img'}-${Date.now()}${ext || '.png'}`);
     }
 });
 const fileFilter = (req, file, cb) => {
